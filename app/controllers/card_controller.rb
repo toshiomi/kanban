@@ -1,5 +1,5 @@
 class CardController < ApplicationController
-  before_action :set_card, only:[:show, :edit, :update]
+  before_action :set_card, only:[:show, :edit, :update, :destroy]
   
   def new
     @card = Card.new
@@ -26,6 +26,13 @@ class CardController < ApplicationController
       redirect_to root_path
     else
       render edit_list_card_path
+    end
+  end
+
+  def destroy
+    if @card.destroy
+      redirect_to root_path
+    else
     end
   end
 
