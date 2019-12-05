@@ -1,5 +1,5 @@
 class ListController < ApplicationController
-  before_action :set_list, only:[:edit, :update]
+  before_action :set_list, only:[:edit, :update, :destroy]
 
   def new
     @list = List.new
@@ -22,6 +22,13 @@ class ListController < ApplicationController
       redirect_to root_path
     else
       render edit_list_path
+    end
+  end
+
+  def destroy
+    if @list.destroy
+      redirect_to root_path
+    else
     end
   end
 
